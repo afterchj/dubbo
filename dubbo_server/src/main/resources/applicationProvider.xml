@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+    <!--应用名称-->
+    <dubbo:application name="hello-world"/>
+
+    <!-- 使用multicast广播注册中心暴露服务地址 <dubbo:registry address="multicast://224.5.6.7:1234" /> -->
+
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry address="zookeeper://192.168.16.41:2181"/>
+    <!-- 指定传输层通信协议 -->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <dubbo:protocol name="rmi" port="1099"/>
+    <!-- 接口的位置 -->
+    <dubbo:service interface="com.tpadsz.service.SayHelloToClient" ref="demoService" executes="10"/>
+    <dubbo:service interface="com.tpadsz.service.DubbodoSomething" ref="serviceVersion1" protocol="dubbo,rmi" version="1.0.0"/>
+    <dubbo:service interface="com.tpadsz.service.DubbodoSomething" ref="serviceVersion2" protocol="dubbo,rmi" version="1.0.1"/>
+
+    <!-- 实现bean，客户端应用的bean就以这个id名称为主 -->
+    <bean id="demoService" class="com.tpadsz.service.impl.SayHelloToClientImpl"/>
+    <!-- 配置Bean -->
+    <bean id="serviceVersion1" class="com.tpadsz.service.impl.DubbodoSomething1Impl"/>
+    <bean id="serviceVersion2" class="com.tpadsz.service.impl.DubbodoSomething2Impl"/>
+</beans>

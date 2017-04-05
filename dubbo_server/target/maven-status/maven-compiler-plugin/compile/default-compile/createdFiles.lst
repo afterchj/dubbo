@@ -1,0 +1,6 @@
+Main.class
+com\tpadsz\service\impl\SayHelloToClientImpl.class
+com\tpadsz\service\impl\DubbodoSomething1Impl.class
+com\tpadsz\service\impl\DubbodoSomething2Impl.class
+com\tpadsz\service\SayHelloToClient.class
+com\tpadsz\service\DubbodoSomething.class
