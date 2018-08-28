@@ -23,8 +23,11 @@ public class DubboStart {
         LightOperation operation = billService.getByLightUid("5bc9f45ab42e453f93ee8a966b5a9726");
         System.out.println(JSON.json(operation));
 
-//        LightBinding binding = billService.getByDeviceId("3E94EE45B6164231A762BB8A6E531E0D");
-//        System.out.println(binding);
+        LightBinding binding = billService.getByDeviceId("3E94EE45B6164231A762BB8A6E531E0D");
+        System.out.println(binding);
+        LightCharge charge = new LightCharge();
+        charge.setUid(binding.getBossUid());
+        billService.insetBill(binding, operation, charge);
         //访问 v1 版本
 //        DubbodoSomething serviceVersion1=(DubbodoSomething) ctx.getBean("serviceVersion1");
 //        System.out.println(serviceVersion1.doSomething());
@@ -34,6 +37,7 @@ public class DubboStart {
 //        //访问随机版本
 //        DubbodoSomething serviceVersion3=(DubbodoSomething) ctx.getBean("serviceVersion3");
 //        System.out.println(serviceVersion3.doSomething());
-
     }
+
+
 }
