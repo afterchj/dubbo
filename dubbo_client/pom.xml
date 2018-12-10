@@ -87,7 +87,7 @@
         <dependency>
             <groupId>com.tpadsz.after</groupId>
             <artifactId>blt-light-api</artifactId>
-            <version>1.0-RELEASE</version>
+            <version>2.0</version>
         </dependency>
     </dependencies>
     <repositories>
