@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import com.alibaba.dubbo.common.json.JSON;
 import com.tpadsz.after.api.RecordBillService;
 import com.tpadsz.after.entity.LightBinding;
